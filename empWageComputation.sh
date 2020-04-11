@@ -3,20 +3,19 @@ isAbsent=0;
 isPresent=1;
 isPartTime=2;
 empStatus=$((RANDOM%3));
-if [ $isPresent -eq $empStatus ]
-then 
-        echo "employee is present"
-elif [ $empStatus -eq $isAbsent ]
-then
-        echo "employee is absent"
-else
-        echo "employee worked for 4 hours only"
-fi
+
+case $empStatus in
+    $isPresent)
+        workingHours=8
+        ;;
+    $isAbsent)
+        workingHours=0
+        ;;
+    $isPartTime)
+        workingHours=4
+        ;;
+esac
 
 wagePerHour=20;
-noOfHoursInDay=8;
-totalDailyWage=$(($wagePerHour*$noOfHoursInDay ));
+totalDailyWage=$(($wagePerHour*$workingHours));
 echo "$totalDailyWage";
-partTimeHours=4;
-totalPartTimeWage=$(( $wagePerHour * $partTimeHours ));
-echo "$totalPartTimeWage";
