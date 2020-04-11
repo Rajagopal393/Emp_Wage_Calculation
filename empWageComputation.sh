@@ -1,2 +1,9 @@
 #! /bin/bash
-echo "empWageComputation program has been created to calculate employee wage"
+isPresent=1
+empStatus=$((RANDOM%2))
+if [ $isPresent -eq $empStatus ]
+    then 
+        echo "employee is present"
+else
+        echo "employee is absent"
+fi
